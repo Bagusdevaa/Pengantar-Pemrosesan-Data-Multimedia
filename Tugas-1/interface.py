@@ -168,57 +168,43 @@ print(df_proces)'''
     st.code(
         '''def expand_abbr(text):
     abbr_dict = {
-        'bgs': 'bagus',
-        'bgt': 'banget',
-        'cpt': 'cepat',
-        'gpp': 'gak apa-apa',
-        'jgn': 'jangan',
-        'msh': 'masih',
-        'nanya': 'bertanya',
-        'nggak': 'tidak',
-        'pdhl': 'padahal',
-        'prnh': 'pernah',
-        'smua': 'semua',
-        'suka2': 'suka-suka',
-        'sukaaa': 'suka sekali',
-        'sya': 'saya',
-        'tggu': 'tunggu',
-        'tokped': 'tokopedia',
-        'trs': 'terus',
-        'sumph':'sumpah',
-        'jg':'juga',
-        'murh':'murah',
-        'gw':'aku',
-        'prsis':'persis',
-        'ngk':'tidak',
-        'rb':'ribu',
-        'tdi':'tadi',
-        'prna':'pernah',
-        'bgus':'bagus',
-        'pdhal':'padahal',
-        'cman':'cuma',
-        'cpet':'cepat',
-        'kmrin':'kemarin',
-        'udh':'udah',
-        'gk':'gak',
-        'nggk':'tidak',
-        'lgi':'lagi',
-        'bangt':'banget',
-        'bublewrap':'pembungkus gelembung',
-        'seler':'penjual',
-        'thanks':'terimakasih',
-        'god':'bagus',
-        'order':'pesan',
-        'wahib':'wajib',
-        'emg':'memang'
+         'bgs': 'bagus','bgt': 'banget',
+            'cpt': 'cepat','gpp': 'gak apa-apa',
+            'jgn': 'jangan','msh': 'masih',
+            'nanya': 'bertanya','nggak': 'tidak',
+            'pdhl': 'padahal','prnh': 'pernah',
+            'smua': 'semua','suka2': 'suka-suka',
+            'sukaaa': 'suka sekali','sya': 'saya',
+            'tggu': 'tunggu','tokped': 'tokopedia',
+            'trs': 'terus','sumph':'sumpah',
+            'jg':'juga','murh':'murah',
+            'gw':'aku','prsis':'persis',
+            'ngk':'tidak','rb':'ribu',
+            'tdi':'tadi','prna':'pernah',
+            'bgus':'bagus','pdhal':'padahal',
+            'cman':'cuma','cpet':'cepat',
+            'kmrin':'kemarin','udh':'udah',
+            'gk':'gak','nggk':'tidak',
+            'lgi':'lagi','bangt':'banget',
+            'bublewrap':'pembungkus gelembung','seler':'penjual',
+            'thanks':'terimakasih', 'god':'bagus',
+            'order':'pesan', 'wahib':'wajib',
+            'emg':'memang', 'pengirimanya':'kirim',
+            'pengiriman':'kirim', 'sebagus':'bagus',
+            'gak':'tidak', 'sih':'',
+            'tasnya':'tas', 'bahanya':'bahan',
+            'gapernah':'tidak pernah', 'wkkk':'',
+            'wk':'', 'ny':'',
+            'gtu':'gitu','nya':'',
+            'dibawah':'di bawah','d':'di',
+            'woy':'','ngecewain':'kecewa',
+            'kualitasnya':'kualias'
     }
     pattern = re.compile(r'\b(' + '|'.join(abbr_dict.keys()) + r')\b')
     text = pattern.sub(lambda x: abbr_dict[x.group()], text)
     return text
-
 for i, text in enumerate(df_proces):
     df_proces[i] = expand_abbr(text)
-
 print(df_proces)'''
     )
     st.dataframe(datasetProces)
@@ -345,7 +331,8 @@ with st.expander("Basic Bag-of-words"):
             count = d.count(word)
             row.append(count)
         bag_of_words.append(row)
-    df = pd.DataFrame(bag_of_words, columns=list(vocabulary), index=["doc_" + str(i) for i in range(len(data))])
+    df = pd.DataFrame(bag_of_words, columns=list(vocabulary), 
+    index=["doc_" + str(i) for i in range(len(data))])
     return df.transpose()
 
 basicBow(dataset_token)'''
